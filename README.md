@@ -68,10 +68,12 @@ After successful deployment:
   - **CLI (mysql client)**
 
 To connect using:
-
+```
  mysql -h <endpoint> -P 3306 -u foo -p
 
- ---
+```
+
+---
 
 ## Note
 
@@ -83,11 +85,15 @@ Enable backup retention or multi-AZ deployment
 
 Manage secrets securely (like password encryption or rotation)
 
+---
+
 ## Cleanup
 
 To destroy all created resources:
 
  terraform destroy -auto-approve
+
+---
 
 ## References
 
