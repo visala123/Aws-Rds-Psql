@@ -69,8 +69,9 @@ After successful deployment:
 
 To connect using:
 
-bash
-mysql -h <endpoint> -P 3306 -u foo -p
+ mysql -h <endpoint> -P 3306 -u foo -p
+
+ ---
 
 ## Note
 
