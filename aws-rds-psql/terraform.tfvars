@@ -1,0 +1,11 @@
+region               = "ap-northeast-2"
+db_name              = "mydb"
+username             = "admin"
+password             = "StrongPassword123!"
+instance_class       = "db.t3.micro"
+engine_version       = "15.4"
+allocated_storage    = 20
+parameter_group_name = "default.mysql8.0"
+# subnet_ids           = ["subnet-0123456789abcdef0", "subnet-0abcdef1234567890"]
+# security_group_id    = "sg-0123456789abcdef0"
+# publicly_accessible  = true
