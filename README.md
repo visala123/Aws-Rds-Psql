@@ -24,11 +24,7 @@ This is a minimal Terraform configuration to provision an **AWS RDS MySQL 8.0** 
 └── .github/
 └── workflows/
 └── deploy.yml # GitHub Actions workflow
-
-yaml
-Copy
-Edit
-
+ 
 ---
 
 ##  Required Secrets in GitHub
@@ -41,7 +37,7 @@ In your GitHub repo, go to:
 |--------------------------|--------------------|
 | `AWS_ACCESS_KEY_ID`      | Access Key         |
 | `AWS_SECRET_ACCESS_KEY`  | Secret Key         |
-| `AWS_REGION`             | Deployment region  |
+|                                               |
 
 >  **How to get these:**  
 > Go to the AWS Console → IAM → Users → Security Credentials → _Create access key_  
@@ -73,9 +69,11 @@ After successful deployment:
 
 To connect using:
 
-```bash
+bash
 mysql -h <endpoint> -P 3306 -u foo -p
+
 ## Note
+
 This setup is for demo or development use only. It does not:
 
 Set up private networking or firewall rules
@@ -85,13 +83,13 @@ Enable backup retention or multi-AZ deployment
 Manage secrets securely (like password encryption or rotation)
 
 ## Cleanup
+
 To destroy all created resources:
 
-bash
-Copy
-Edit
-terraform destroy -auto-approve
+ terraform destroy -auto-approve
+
 ## References
+
    Terraform AWS Provider Docs
 
    Amazon RDS Documentation
