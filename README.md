@@ -14,17 +14,8 @@ This is a minimal Terraform configuration to provision an **AWS RDS MySQL 8.0** 
 
 ##  Project Structure
 
-.
-├── main.tf # RDS MySQL resource
-├── provider.tf # AWS provider config
-├── variables.tf # Input variables
-├── terraform.tfvars # Variable values
-├── output.tf # Outputs RDS endpoint
-├── backend.tf # (Optional) Remote state backend
-└── .github/
-└── workflows/
-└── deploy.yml # GitHub Actions workflow
- 
+![Structure](images/RDS Structure.png)
+
 ---
 
 ##  Required Secrets in GitHub
