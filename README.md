@@ -14,7 +14,7 @@ This is a minimal Terraform configuration to provision an **AWS RDS MySQL 8.0** 
 
 ##  Project Structure
 
-![Structure](images/RDS-Structure.png)
+![Structure](aws-rds-psql/images/RDS-Structure.png)
 
 ---
 
