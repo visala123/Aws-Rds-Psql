@@ -14,54 +14,83 @@ This is a minimal Terraform configuration to provision an **AWS RDS MySQL 8.0** 
 
 ##  Project Structure
 
-.
-├── main.tf # RDS MySQL resource
-├── provider.tf # AWS provider config
-├── variables.tf # Input variables
-├── terraform.tfvars # Variable values
-├── output.tf # Outputs RDS endpoint
-├── backend.tf # (Optional) Remote state backend
-└── .github/workflows/deploy.yml # GitHub Actions workflow
-
-yaml
-Copy
-Edit
+![Structure](aws-rds-psql/images/RDS-Structure.png)
 
 ---
 
-##  Requirements
+##  Required Secrets in GitHub
 
-- Terraform ≥ 1.3
-- AWS CLI or credentials
-- An AWS default VPC in your chosen region
-- GitHub repository with the following secrets:
-  - `AWS_ACCESS_KEY_ID`
-  - `AWS_SECRET_ACCESS_KEY`
-  - `AWS_REGION`
+In your GitHub repo, go to:
+
+**Settings → Secrets and Variables → Actions** and add:
+
+| Secret Name              | Description        |
+|--------------------------|--------------------|
+| `AWS_ACCESS_KEY_ID`      | Access Key         |
+| `AWS_SECRET_ACCESS_KEY`  | Secret Key         |
+|                                               |
+
+>  **How to get these:**  
+> Go to the AWS Console → IAM → Users → Security Credentials → _Create access key_  
+> You will receive an **Access Key ID** and **Secret Access Key**.
 
 ---
 
+##  GitHub Actions CI/CD
 
-## Outputs
-RDS Endpoint – printed after deployment
+The included workflow file `deploy.yml` will:
 
-Use any MySQL client (e.g., DBeaver, MySQL Workbench) to connect
+- Trigger on every push to the `main` branch
+- Perform:
+  1. Code checkout
+  2. AWS credential setup
+  3. Terraform init, validate, plan, and apply
+
+---
+
+##  Outputs
+
+After successful deployment:
+
+- RDS Endpoint will be printed in the Terraform output
+- You can use tools like:
+  - **DBeaver**
+  - **MySQL Workbench**
+  - **CLI (mysql client)**
+
+To connect using:
+```
+ mysql -h <endpoint> -P 3306 -u foo -p
+
+```
+
+---
 
 ## Note
-This setup is for demo/testing purposes only.
 
- It does not:
+This setup is for demo or development use only. It does not:
 
-Set up private networking or security groups
+Set up private networking or firewall rules
 
-Enable automatic backups or multi-AZ failover
+Enable backup retention or multi-AZ deployment
 
-Store credentials securely
+Manage secrets securely (like password encryption or rotation)
+
+---
 
 ## Cleanup
 
- ## References
-Terraform AWS Provider Docs
+To destroy all created resources:
 
-https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance
+ terraform destroy -auto-approve
+
+---
+
+## References
+
+   Terraform AWS Provider Docs
+
+   Amazon RDS Documentation
+
+  https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance
 
